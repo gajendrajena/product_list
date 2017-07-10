@@ -4,7 +4,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   # GET /products
   # GET /products.json
   def index
-    respond_with Product.all
+    respond_with Product.all.limit(10)
   end
 
   # GET /products/1
@@ -24,7 +24,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   # POST /products
   # POST /products.json
   def create
-    respond_with :api, :v1, Product.create(item_params)
+    respond_with :api, :v1, Product.create(product_params)
   end
 
   # PATCH/PUT /products/1

@@ -1,5 +1,5 @@
-class Header extends React.Component {
+var Header = React.createClass({
   render() {
     return <h1>Hello World</h1>;
   }
-}
+});
