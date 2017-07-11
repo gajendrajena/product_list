@@ -5,6 +5,6 @@ var Main = React.createClass({
         <Header />
         <Body />
       </div>
-      );
+    );
   }
 });

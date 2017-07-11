@@ -1,5 +1,5 @@
 var Header = React.createClass({
   render() {
-    return <h1>Hello World</h1>;
+    return <h1>Products List</h1>;
   }
 });

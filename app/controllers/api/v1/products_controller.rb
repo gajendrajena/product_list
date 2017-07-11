@@ -31,7 +31,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   # PATCH/PUT /products/1.json
   def update
     @product.update(product_params)
-    respond_with item, json: @product
+    respond_with @product, json: @product
 
   end
 

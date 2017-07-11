@@ -1,23 +1,28 @@
 var Products = React.createClass({
+
     handleDelete(id) {
-      console.log('delete item clicked');
       this.props.handleDelete(id);
+    },
+
+    onUpdate(product) {
+      this.props.onUpdate(product);
     },
 
   render() {
     var products = this.props.products.map((product) => {
       return (
-          <div key={product.id}>
-            <Product product={product}
-              handleDelete={this.handleDelete.bind(this, product.id)}
-              handleEdit={this.handleEdit}/>
-          </div>
-        );
+        <Product product={product}
+          key={product.id}
+          productDetails={this.props.productDetails}
+          handleDelete={this.handleDelete.bind(this, product.id)}
+          handleUpdate={this.onUpdate}
+          handleEdit={this.handleEdit}/>
+      );
     });
     return (
-      <div>
+      <ul className="list-group">
         {products}
-      </div>
+      </ul>
     );
   }
 });

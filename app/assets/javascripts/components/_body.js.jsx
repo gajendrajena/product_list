@@ -1,11 +1,18 @@
 var Body = React.createClass({
 
   getInitialState() {
-    return { products: [] }
+    return {
+      products: []
+      currentProduct: null;
+    }
   },
 
   componentDidMount() {
-    $.getJSON('/api/v1/products.json', (response) => { this.setState({ products: response }) });
+    $.getJSON('/api/v1/products.json', (response) => {
+      this.setState({ products: response })
+      this.setState({ currentProduct: this.state.products.first })
+    });
+
   },
 
   handleSubmit(product) {
@@ -13,9 +20,10 @@ var Body = React.createClass({
     this.setState({ products: newState })
   },
 
-  handleEdit() {
-
+  productDetails(){
+    $('#right-side').html("<NewProduct handleSubmit={this.handleSubmit}/>")
   },
+
 
   handleDelete(id) {
     $.ajax({
@@ -37,10 +45,18 @@ var Body = React.createClass({
 
   render() {
     return (
-      <div>
-      <NewProduct handleSubmit={this.handleSubmit}/>
-      <Products products={this.state.products} handleDelete={this.handleDelete}/>
+      <div className="row">
+        <div className="col-lg-4">
+          <div className="well">
+            <Products products={this.state.products} handleDelete={this.handleDelete} productDetails={this.productDetails}/>
+          </div>
+        </div>
+        <div className="col-lg-8">
+          <div className="well" id="right-side">
+            <NewProduct handleSubmit={this.handleSubmit} product={this.state.currentProduct}/>
+          </div>
+        </div>
       </div>
-      );
+    );
   }
 });
