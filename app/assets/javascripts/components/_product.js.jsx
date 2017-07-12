@@ -34,43 +34,18 @@ var Product = React.createClass({
 
 
   render() {
-    return this.state.editable ? this.renderForm() : this.renderView();
-  },
-
-  renderView() {
     return(
-      <li className="list-group-item" onClick={this.props.productDetails}>
+      <li className="list-group-item">
         <div className='row'>
           <div className='col-md-8'>
-            {this.props.product.name}
+            <a href='javascript:void(0);' className='pull-left' onClick={this.props.productDetails} id={this.props.product.id}> {this.props.product.name} </a>
           </div>
           <div className='col-md-4'>
-            <span className="label label-default">Rs {this.props.product.price}</span>
+            <span className="label label-default pull-right">Rs {this.props.product.price}</span>
           </div>
         </div>
       </li>
     );
   },
-
-  renderForm() {
-    return(
-
-      <div className='form-horizontal'>
-        <div className='form-group'>
-          <input ref='name' placeholder='Enter name of the product' type='text' defaultValue={this.props.product.name}/>
-        </div>
-        <div className='form-group'>
-          <textarea ref='description' placeholder='Enter a description'defaultValue={this.props.product.description}/>
-        </div>
-        <div className='form-group'>
-          <input ref='price' placeholder='Enter a price' type='number' defaultValue={this.props.product.price}/>
-        </div>
-        <div className='form-group'>
-          <button onClick={this.updateProduct} type='submit'> Submit </button>
-          <a onClick={this.cancelEdit}> Cancel </a>
-        </div>
-      </div>
-    );
-  }
 
 });

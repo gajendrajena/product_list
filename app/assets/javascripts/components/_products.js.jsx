@@ -11,12 +11,7 @@ var Products = React.createClass({
   render() {
     var products = this.props.products.map((product) => {
       return (
-        <Product product={product}
-          key={product.id}
-          productDetails={this.props.productDetails}
-          handleDelete={this.handleDelete.bind(this, product.id)}
-          handleUpdate={this.onUpdate}
-          handleEdit={this.handleEdit}/>
+        <Product product={product} key={product.id} productDetails={this.props.productDetails}/>
       );
     });
     return (
