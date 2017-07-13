@@ -32,7 +32,7 @@ var ProductCrud = React.createClass({
     }
 
     return (
-      <div>
+      <div className='well fix-height'>
         {prTemplate}
       </div>
     );

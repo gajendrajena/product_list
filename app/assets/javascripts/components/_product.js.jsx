@@ -35,15 +35,19 @@ var Product = React.createClass({
 
   render() {
     return(
-      <li className="list-group-item">
-        <div className='row'>
-          <div className='col-md-8'>
-            <a href='javascript:void(0);' className='pull-left' onClick={this.props.productDetails} id={this.props.product.id}> {this.props.product.name} </a>
-          </div>
-          <div className='col-md-4'>
-            <span className="label label-default pull-right">Rs {this.props.product.price}</span>
-          </div>
-        </div>
+      <li className="list-group-item margin-bottom-15">
+			  <a href='javascript:void(0)' onClick={this.props.productDetails} id={this.props.product.id} className='product-link'>
+          <div className="product-item">
+            <div className="col-md-5 no-padding">
+    				  <div className="product-image"> </div>
+            </div>
+
+            <div className="product-attributes col-md-7">
+              <div className="product-name"> {this.props.product.name} </div>
+              <div className="price"> ${this.props.product.price} </div>
+            </div>
+					</div>
+				</a>
       </li>
     );
   },

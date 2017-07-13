@@ -23,7 +23,7 @@ var NewProduct = React.createClass({
 
   render() {
     return (
-      <div className='clearfix row'>
+      <div className='clearfix row padding-15 '>
         <h3>Add a new product</h3>
         <div id="error"></div>
         <div className='col-md-12'>
@@ -34,14 +34,16 @@ var NewProduct = React.createClass({
             </div>
             <div className='form-group'>
               <label>Description</label>
-              <textarea ref='description' placeholder='Enter a description' className='form-control'/>
+              <textarea ref='description' placeholder='Enter a description' className='form-control' rows='12'/>
             </div>
             <div className='form-group'>
               <label>Price</label>
               <input ref='price' placeholder='Enter a price' type='number' className='form-control'/>
             </div>
             <div className='form-group'>
-              <button onClick={this.saveProduct} className='btn btn-success'> Submit </button>
+              <button onClick={this.saveProduct} className='btn btn-success'>
+                <span className='glyphicon glyphicon-check'> </span> Save
+              </button>
             </div>
           </div>
         </div>

@@ -31,9 +31,6 @@ class Api::V1::ProductsController < Api::V1::BaseController
   # PATCH/PUT /products/1.json
   def update
     @product.update(product_params)
-    puts "*********************************************************"
-    puts @product.inspect
-    puts "*********************************************************"
     respond_with @product, json: @product
   end
 

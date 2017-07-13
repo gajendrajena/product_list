@@ -17,15 +17,21 @@ var Body = React.createClass({
   },
 
   handleSubmit(product) {
-    var newState = this.state.products.concat(product);
-    this.setState({ products: newState })
+    var index = this.state.products.findIndex(function(p) {return p.id == product.id; });
+		var newState = this.state.products;
+		if(index !== -1)
+			newState[index] = product;
+		else
+			newState = this.state.products.concat(product);
+
+    this.setState({ products: newState, prodAction: 'show', curProduct: product});
   },
 
   productDetails(event){
-    var id = $(event.target).attr('id');
+    var target = $(event.target).closest('.product-link')
+    var id = $(target).attr('id');
     var product = this.state.products.find(function(p) {return p.id == id; });
-    this.setState({ prodAction: 'show' });
-    this.setState({ curProduct: product});
+    this.setState({ prodAction: 'show', curProduct: product});
   },
 
 
@@ -53,8 +59,7 @@ var Body = React.createClass({
     var newProducts = this.state.products.filter((product) => {
       return product.id != id;
     });
-    this.setState({ products: newProducts});
-    this.setState({ prodAction: 'new' });
+    this.setState({ products: newProducts, prodAction: 'new' });
   },
 
   validateProduct(name, price){
@@ -74,7 +79,7 @@ var Body = React.createClass({
   render() {
     return (
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-lg-4 fix-height v-scroll">
           <div className="well">
             <Products products={this.state.products} productDetails={this.productDetails}/>
           </div>
