@@ -11,21 +11,18 @@ var NewProduct = React.createClass({
         data: { product: { name: name, description: description , price: price } },
         success: (product) => {
           this.props.handleSubmit(product);
-        },
-        complete: () => {
-          this.refs.name.value = '';
-          this.refs.description.value = '';
-          this.refs.price.value = '';
         }
       });
     }
   },
 
   render() {
+		var formError = this.props.formError ? <Error message={this.props.errorMessage}></Error> : '';
+
     return (
       <div className='clearfix row padding-15 '>
         <h3>Add a new product</h3>
-        <div id="error"></div>
+				{formError}
         <div className='col-md-12'>
           <div className="form-horizontal">
             <div className='form-group'>

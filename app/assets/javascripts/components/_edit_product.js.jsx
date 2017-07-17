@@ -19,10 +19,12 @@ var EditProduct = React.createClass({
   },
 
   render() {
+		var formError = this.props.formError ? <Error message={this.props.errorMessage}></Error> : '';
+
     return (
       <div className='clearfix row padding-15 '>
         <h3>Edit Product</h3>
-        <div id="error"></div>
+        {formError}
         <div className='col-md-12'>
           <div className="form-horizontal">
             <div className='form-group'>

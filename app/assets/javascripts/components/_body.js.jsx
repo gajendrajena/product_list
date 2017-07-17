@@ -13,17 +13,15 @@ var Body = React.createClass({
       this.setState({ products: response })
       this.setState({ curProduct: this.state.products.first })
     });
-
   },
 
   handleSubmit(product) {
     var index = this.state.products.findIndex(function(p) {return p.id == product.id; });
-		var newState = this.state.products;
-		if(index !== -1)
-			newState[index] = product;
+    var newState = this.state.products;
+    if(index !== -1)
+      newState[index] = product;
 		else
-			newState = this.state.products.concat(product);
-
+	    newState = this.state.products.concat(product);
     this.setState({ products: newState, prodAction: 'show', curProduct: product});
   },
 
@@ -47,7 +45,6 @@ var Body = React.createClass({
 
   handleEdit(id) {
     var product = this.state.products.find(function(p) {return p.id == id; });
-    console.log('handleEdit:Body : id-'+id);
     this.setState({ prodAction: 'edit', curProduct: product});
   },
 
@@ -62,19 +59,6 @@ var Body = React.createClass({
     this.setState({ products: newProducts, prodAction: 'new' });
   },
 
-  validateProduct(name, price){
-    var msg = 'Please enter ', flag = true;
-    if( name.length <= 0 && price.length <= 0 ){
-      msg += 'Name and Price', flag = false;
-    } else if( name.length <= 0 ){
-      msg += 'Name', flag = false;
-    } else if( price.length <= 0 ){
-      msg += 'Price', flag = false;
-    }
-    if(!flag)
-    $('#error').html(`<div class="alert alert-danger alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>${msg}</div>`);
-    return flag;
-  },
 
   render() {
     return (
@@ -92,7 +76,6 @@ var Body = React.createClass({
               product={this.state.curProduct}
               handleDelete={this.handleDelete}
               handleEdit={this.handleEdit}
-              validateProduct={this.validateProduct}
               resetToNew={this.resetToNew}/>
           </div>
         </div>

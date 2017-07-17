@@ -15,9 +15,7 @@ var Products = React.createClass({
       );
     });
     return (
-			<ul className="list-group">
-				{products}
-			</ul>
+      <ul className="list-group"> {products} </ul>
     );
   }
 });
