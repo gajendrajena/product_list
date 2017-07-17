@@ -1,9 +1,9 @@
 class CreateProducts < ActiveRecord::Migration[5.1]
   def change
     create_table :products do |t|
-      t.string :name
+      t.string :name, index: true, null: false
       t.text :description
-      t.float :price
+      t.float :price, index: true, null: false
 
       t.timestamps
     end

@@ -16,11 +16,21 @@ ActiveRecord::Schema.define(version: 20170707122846) do
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
+<<<<<<< HEAD
     t.string "name"
     t.text "description"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+    t.string "name", null: false
+    t.text "description"
+    t.float "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_products_on_name"
+    t.index ["price"], name: "index_products_on_price"
+>>>>>>> 29e992264dcfe0c226f08a6a3e9793869f66af17
   end
 
 end

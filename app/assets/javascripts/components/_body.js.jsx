@@ -59,6 +59,19 @@ var Body = React.createClass({
     this.setState({ products: newProducts, prodAction: 'new' });
   },
 
+  validateProduct(name, price){
+    var msg = 'Please enter ', flag = true;
+    if( name.length <= 0 && price.length <= 0 ){
+      msg += 'Name and Price', flag = false;
+    } else if( name.length <= 0 ){
+      msg += 'Name', flag = false;
+    } else if( price.length <= 0 ){
+      msg += 'Price', flag = false;
+    }
+    if(!flag)
+    $('#error').html(`<div class="alert alert-danger alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>${msg}</div>`);
+    return flag;
+  },
 
   render() {
     return (
